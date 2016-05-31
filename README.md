@@ -17,9 +17,14 @@ This package contains the following components
 -   Profiler (Show memory usage)
 
 ## Installation
-Clone it to your folder, Use Unity and open the directory.
+Pre-requisite: Unity3d version 5++ software download it at http://unity3d.com/get-unity.
+1. Clone it to your working directory, 
 
-Run the StartScene and see TestObject prefab for more details .
+2. Open the project that you have clone using Unity3d.
+
+3. Run the StartScene.
+
+4. Examine TestObject prefab and console for more info. (Can also see the Scripts attached to it).
 
 ## Usage
 Run the project and see TestClass.cs for more details on how to use it
