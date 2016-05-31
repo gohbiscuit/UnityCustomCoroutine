@@ -23,7 +23,7 @@ public static class Debug
 	// private static bool m_isEnable = UnityEngine.Debug.isDebugBuild;
 
 	// can use scripting variables like #IF_STAGING_SERVER to change the value
-	private static bool m_isEnable = true;
+	private static bool m_isEnable = false;
 
 	static bool IsEnable ()
 	{
