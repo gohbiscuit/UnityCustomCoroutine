@@ -11,6 +11,7 @@
 using UnityEngine;
 using System.Collections;
 using MyPackage;
+using System;
 
 /// <summary>
 /// Unity extensions class
@@ -18,49 +19,48 @@ using MyPackage;
 public static class UnityExtensions
 {
 	/// <summary>
-	/// Invokes the event.
+	/// Raises the event.
 	/// </summary>
 	/// <param name="myAction">My action.</param>
 	/// <param name="args">Arguments.</param>
-	public static void InvokeEvent(this CustomAction myAction, params object[] args)
+	public static void RaiseEvent(this MyPackage.EventHandler<CustomEventArgs> myEvent, CustomEventArgs args)
 	{
-		if (myAction != null) 
+		if (myEvent != null) 
 		{
-			// call the delegate function
-			myAction.Invoke ( args );
+			myEvent.Invoke (myEvent, args);
 		}
 	}
 
 	/// <summary>
-	/// Creates the task and start it immediately
+	/// Creates the coroutine and start it immediately
 	/// Usage:
-	/// Task t = this.StartTask( CoroutineA() )
-	/// yield return t.untilDone;		// will wait until all task is done
+	/// Task t = this.StartCustomCoroutine( CoroutineA() )
+	/// yield return t.untilDone;		// will wait until all coroutine is done
 	/// </summary>
 	/// <returns>The task.</returns>
 	/// <param name="taskOwner">Task owner.</param>
 	/// <param name="coroutine">Coroutine.</param>
-	public static Task StartTask(this MonoBehaviour taskOwner, IEnumerator coroutine)
+	public static CustomCoroutine StartCustomCoroutine(this MonoBehaviour taskOwner, IEnumerator coroutine)
 	{
-		Task coroutineObject = new Task (taskOwner);
+		CustomCoroutine coroutineObject = new CustomCoroutine (taskOwner);
 		coroutineObject.StartInternalRoutine (coroutine);
 		return coroutineObject;
 	}
 		
 
 	/// <summary>
-	/// Creates the task. But not yet started
+	/// Creates the coroutine. But not yet started
 	/// Usage: 
-	/// Task t = this.CreateTask( CoroutineA() );
+	/// CustomCoroutine t = this.CreateCustomCoroutine( CoroutineA() );
 	/// t.AddTask( CoroutineB() );
 	/// t.Start();			
 	/// </summary>
 	/// <returns>The task.</returns>
 	/// <param name="taskOwner">Task owner.</param>
 	/// <param name="coroutine">Coroutine.</param>
-	public static Task CreateTask(this MonoBehaviour taskOwner, IEnumerator coroutine)
+	public static CustomCoroutine CreateCustomCoroutine(this MonoBehaviour taskOwner, IEnumerator coroutine)
 	{
-		Task coroutineObject = new Task (taskOwner, coroutine);
+		CustomCoroutine coroutineObject = new CustomCoroutine (taskOwner, coroutine);
 		return coroutineObject;
 	}
 

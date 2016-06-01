@@ -12,6 +12,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using MyPackage;
 
 public class ProfileUtility : MonoBehaviour 
 {
@@ -25,18 +26,19 @@ public class ProfileUtility : MonoBehaviour
 
 	void OnEnable()
 	{
-		TestClass.OnActionClicked += OnFinish;
+		GetComponent<TestClass> ().MyEvent += OnEvent;
 	}
 
 	void OnDisable()
 	{
-		TestClass.OnActionClicked -= OnFinish;
+		GetComponent<TestClass> ().MyEvent -= OnEvent;
 	}
 
 	#endregion
 
-	void OnFinish(object[] param)
+	void OnEvent(object sender, CustomEventArgs args)
 	{
+		Debug.Log ("ProfileUtility:: OnEvent() " + args.Current.Length);
 	}
 
 	void Start()

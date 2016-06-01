@@ -8,34 +8,39 @@ using MyPackage;
 /// </summary>
 public class TestClass : MonoBehaviour 
 {
-	public static CustomAction OnActionClicked;
-
 	private CustomCoroutine m_coroutineTest;
+
+	public EventHandler<CustomEventArgs> MyEvent;
 
 	#region Mono
 
 	void OnEnable()
 	{
-		TestClass.OnActionClicked += HandleOnClick;
+		MyEvent += HandleOnClick; 
 	}
 
 	void OnDisable()
 	{
-		TestClass.OnActionClicked -= HandleOnClick;
+		MyEvent -= HandleOnClick; 
 	}
 
 	#endregion
 
-	void HandleOnClick(object[] param)
+ 	static void HandleOnClick(object sender, CustomEventArgs args)
 	{
+		if (args == null || args.Current == null)
+			return;
+
+		object[] param = args.Current;
+
 		if (param.Length == 2) 
 		{
 			string message = param [0] as string + param [1] as string;
-			Debug.Log (message);
+			Debug.Log ("::TestClass:: HandleOnClick()" + message);
 		} 
 		else if(param.Length == 1)
 		{
-			Debug.Log ((int) param [0]);
+			Debug.Log ("::TestClass:: HandleOnClick()" + (int) param [0]);
 		}
 	}
 
@@ -94,10 +99,8 @@ public class TestClass : MonoBehaviour
 
 	void TestActionEventHandler()
 	{
-		OnActionClicked.InvokeEvent("Rate It ", "10/10");
-		OnActionClicked.InvokeEvent(999);
-		Debug.Log ("Number of subscribers: " + OnActionClicked.GetInvocationList ().Length);
-	}
+		MyEvent.RaiseEvent ( new CustomEventArgs("TestEvent ", 1) );
+	} 
 
 	void TestCoroutine()
 	{
@@ -120,8 +123,8 @@ public class TestClass : MonoBehaviour
 		
 	void Start()
 	{
-//		TestActionEventHandler ();
-		TestCoroutine ();
+		TestActionEventHandler ();
+//		TestCoroutine ();
 	}
 
 }

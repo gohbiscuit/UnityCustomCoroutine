@@ -10,30 +10,30 @@
 
 using UnityEngine;
 using System.Collections;
+using System;
 
 namespace MyPackage
 {
-	// See TestClass.cs for more info on how to use it
-	/// <summary>
-	/// Custom Action. Declares a custom delegate static
-	/// Usage:
-	/// class A
-	/// public static SURFAction OnActionClicked;
-	/// 
-	/// OnActionClick.InvokeEvent(<params>);
-	/// class B
-	/// 
-	/// void OnEnable()
-	///	{
-	///		A.OnActionClicked += HandleOnClick;
-	///	}
-	///
-	///	void OnDisable()
-	///	{
-	///		A.OnActionClicked -= HandleOnClick;
-	///	}
-	/// 
-	/// 
-	/// </summary>
-	public delegate void CustomAction(object[] param);
+	// See TestClass.cs and Profile Utility.cs for more info on how to use it
+	public delegate void EventHandler<CustomEventArgs>(object sender, CustomEventArgs e) where CustomEventArgs : EventArgs;
+
+	public class EventManager
+	{
+		private static EventManager m_instance = null;
+		public static EventManager Instance
+		{
+			get 
+			{ 
+				if (m_instance == null) 
+				{
+					m_instance = new EventManager ();
+				}
+
+				return m_instance;
+			}
+		}
+			
+	}
+
+
 }
