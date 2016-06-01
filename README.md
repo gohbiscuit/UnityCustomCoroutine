@@ -30,23 +30,23 @@ Pre-requisite: Unity3d version 5++ software download it at http://unity3d.com/ge
 Run the project and see TestClass.cs for more details on how to use it
 
 #1 - Add all tasks and start when needed
-Task t = this.CreateTask (DoSomethingCoroutine ());
-t.AddTask(DoAnotherCoroutine());
+CustomCoroutine t = this.CreateCustomCoroutine (DoSomethingCoroutine ());
+t.AddCoroutine(DoAnotherCoroutine());
 ...
 t.Start();
 
 #2 - Start task immediately
-this.StartTask(DoMyCoroutine());
+this.StartCustomCoroutine(DoMyCoroutine());
 
 #3- Wait until done
 IEnumerator CoroutineFunc()
 {
 ...
-yield return this.StartTask(MyCoroutine()).UntilDone;
+yield return this.StartCustomCoroutine(MyCoroutine()).UntilDone;
 
 or
 
-Task t = this.CreateTask (MyCoroutine ());
+CustomCoroutine t = this.CreateCustomCoroutine (MyCoroutine ());
 t.Start();
 yield return t.UntilDone;
 }
@@ -62,7 +62,12 @@ yield return t.UntilDone;
 First created 31/05/2016 by Edwin. Cheers.
 
 ## Credits
-@author Edwin
+
+The classes was made with some references, h
+
+References:
+http://answers.unity3d.com/questions/1040319/whats-the-proper-way-to-queue-and-space-function-c.html
+http://twistedoakstudios.com/blog/Post83_coroutines-more-than-you-want-to-know
 
 
 ## License
