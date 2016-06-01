@@ -7,7 +7,7 @@ Custom Coroutine Classes to perform yielding of coroutine that has the following
 
 # UnityCustomCoroutine
 This package contains the following components
-- Task.cs (Custom Coroutine Classes)
+- CustomCoroutine.cs (Custom Coroutine Classes)
 - EventManager.cs (Custom classes for managing multi-cast delegates)
 - TestClass.cs (Class to test Task.cs and delegates)
 - 
@@ -29,16 +29,16 @@ Pre-requisite: Unity3d version 5++ software download it at http://unity3d.com/ge
 ## Usage
 Run the project and see TestClass.cs for more details on how to use it
 
-#1 - Add all tasks and start when needed
+#1 - Add all custom coroutine and start when needed
 CustomCoroutine t = this.CreateCustomCoroutine (DoSomethingCoroutine ());
 t.AddCoroutine(DoAnotherCoroutine());
 ...
 t.Start();
 
-#2 - Start task immediately
+#2 - Start coroutine immediately
 this.StartCustomCoroutine(DoMyCoroutine());
 
-#3- Wait for Task to Complete
+#3- Wait for coroutine to Complete
 IEnumerator CoroutineFunc()
 {
 ...
