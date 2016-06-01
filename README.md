@@ -62,7 +62,7 @@ yield return t.UntilDone;
 First created 31/05/2016 by Edwin. Cheers.
 
 ## Credits
-@author Edwin Goh Bing Hiang
+@author Edwin
 
 
 ## License
