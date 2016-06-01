@@ -8,8 +8,8 @@ Custom Coroutine Classes to perform yielding of coroutine that has the following
 # UnityCustomCoroutine
 This package contains the following components
 - Task.cs (Custom Coroutine Classes)
-- CustomActionManager.cs (Custom classes for managing delegates event handling)
-- TestClass.cs (Class to test Task.cs and CustomActionManager delegates)
+- EventManager.cs (Custom classes for managing multi-cast delegates)
+- TestClass.cs (Class to test Task.cs and delegates)
 - 
 - Utility packages contains
 -   Debug.cs (debug wrapper class that hides logging on release build)
@@ -38,7 +38,7 @@ t.Start();
 #2 - Start task immediately
 this.StartCustomCoroutine(DoMyCoroutine());
 
-#3- Wait until done
+#3- Wait for Task to Complete
 IEnumerator CoroutineFunc()
 {
 ...
@@ -63,7 +63,7 @@ First created 31/05/2016 by Edwin. Cheers.
 
 ## Credits
 
-The classes was made with some references from online forums, as well as crediting my mentor Muxian Wu.
+The classes was made with some references from online resource, as well as crediting my mentor Muxian Wu.
 
 References:
 http://answers.unity3d.com/questions/1040319/whats-the-proper-way-to-queue-and-space-function-c.html
