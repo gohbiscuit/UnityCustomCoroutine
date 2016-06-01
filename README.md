@@ -63,11 +63,14 @@ First created 31/05/2016 by Edwin. Cheers.
 
 ## Credits
 
-The classes was made with some references, h
+The classes was made with some references from online forums, as well as crediting my mentor Muxian Wu.
 
 References:
 http://answers.unity3d.com/questions/1040319/whats-the-proper-way-to-queue-and-space-function-c.html
 http://twistedoakstudios.com/blog/Post83_coroutines-more-than-you-want-to-know
+
+http://blog.zephyr-ware.com/delegates-and-events/
+http://www.codeproject.com/Articles/20550/C-Event-Implementation-Fundamentals-Best-Practices
 
 
 ## License
