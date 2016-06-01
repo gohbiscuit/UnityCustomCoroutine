@@ -10,7 +10,7 @@ public class TestClass : MonoBehaviour
 {
 	public static CustomAction OnActionClicked;
 
-	private Task m_coroutineTest;
+	private CustomCoroutine m_coroutineTest;
 
 	#region Mono
 
@@ -68,7 +68,7 @@ public class TestClass : MonoBehaviour
 
 	private IEnumerator PrintD()
 	{
-		yield return this.StartTask (PrintC ()).UntilDone;
+		yield return this.StartCustomCoroutine (PrintC ()).UntilDone;
 
 		Debug.Log ("D");
 
@@ -79,9 +79,9 @@ public class TestClass : MonoBehaviour
 
 	private IEnumerator PrintAll()
 	{
-		m_coroutineTest = this.CreateTask (PrintA ());
-		m_coroutineTest.AddTask (PrintB ());
-		m_coroutineTest.AddTask (PrintD());
+		m_coroutineTest = this.CreateCustomCoroutine (PrintA ());
+		m_coroutineTest.AddCoroutine (PrintB ());
+		m_coroutineTest.AddCoroutine (PrintD());
 
 		m_coroutineTest.Start ();
 
@@ -102,7 +102,7 @@ public class TestClass : MonoBehaviour
 	void TestCoroutine()
 	{
 		Debug.Log ("::: Testing Coroutines :::");
-		this.StartTask (PrintAll ());
+		this.StartCustomCoroutine (PrintAll ());
 
 		// output:
 		// ::: Testing Coroutines :::
